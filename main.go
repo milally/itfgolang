@@ -32,8 +32,6 @@ var (
 	version    = flag.String("version", "1.0", "itfgolang version")
 )
 
-// const baseChangeURL = "https://go.googlesource.com/go/+/"
-
 func main() {
 	flag.Parse()
 	hostname := GetHostname()
@@ -60,7 +58,7 @@ type Server struct {
 
 // GetHost returns the hostname of the container where the code is running
 func GetHostname() string{
-	out, err := exec.Command("cat /etc/hostname").Output()
+	out, err := exec.Command("hostname").Output()
 	if err != nil {
 		log.Fatal(err)
 	}
