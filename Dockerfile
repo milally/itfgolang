@@ -7,7 +7,7 @@ WORKDIR /go/src/app
 COPY . .
 
 # Build the itfgolang command inside the container.
-RUN go install github.com/milally/itfgolang
+#RUN go install github.com/milally/itfgolang
 
 RUN go-wrapper download   # "go get -d -v ./..."
 RUN go-wrapper install    # "go install -v ./..."
