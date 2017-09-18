@@ -2,16 +2,20 @@
 # and a workspace (GOPATH) configured at /go.
 FROM golang
 
-# Copy the local package files to the container's workspace.
-ADD . itfgolang
+WORKDIR /go/src/app
+
+COPY . .
 
 # Build the itfgolang command inside the container.
-# (You may fetch or manage dependencies here,
-# either manually or with a tool like "godep".)
 RUN go install github.com/milally/itfgolang
 
+RUN go-wrapper download   # "go get -d -v ./..."
+RUN go-wrapper install    # "go install -v ./..."
+
 # Run the itfgolang command by default when the container starts.
-ENTRYPOINT /go/bin/itfgolang
+#ENTRYPOINT /go/bin/itfgolang
 
 # Document that the service listens on port 8080.
 EXPOSE 8080
+
+CMD ["go-wrapper", "run"] # ["app"]
