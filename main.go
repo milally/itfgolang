@@ -29,7 +29,7 @@ import (
 // Command-line flags.
 var (
 	httpAddr   = flag.String("http", ":8080", "Listen address")
-	version    = flag.String("version", "1.1", "itfgolang version")
+	version    = flag.String("version", "1.2", "itfgolang version")
 )
 
 func main() {
